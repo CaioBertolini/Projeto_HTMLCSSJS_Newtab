@@ -13,16 +13,16 @@
                 <div>Controle finaceiro</div>
             </div>
             <div class="header-menu">
-                <a href="#" id="dashboard">Dashboard</a>
-                <a href="#" id="abstract">Resumo</a>
-                <a href="#">Configurações</a>
+                <a href="#" id="dashboard">Limpar dados</a>
+                <a href="#" id="abstract">Cadastro de transações</a>
+                <a href="#">Salvar no servidor</a>
             </div>
         </header>
-        <div>
-            <form action="">
-                <div>Nova transação</div>
-                <div>
-                    <div>Tipo transação</div>
+        <div class="body-bellow">
+            <div class="deal-block">
+                <span class="new-deal">Nova transação</span>
+                <div class="style-type-deal">
+                    <span>Tipo transação</span>
                     <div>
                         <select name="type_deal" id="type_deal">
                             <option value="buy">Compra</option>
@@ -31,39 +31,39 @@
                     </div>
                 </div>
                 <div>
-                    <div>Nome da mercadoria</div>
+                    <span>Nome da mercadoria</span>
                     <div><input type="tex" name="name_commodity" id="name_commodity" placeholder="Input"/></div>
                 </div>
                 <div>
-                    <div>Valor</div>
+                    <span>Valor</span>
                     <div><input type="text" name="value_commodity" id="value_commodity" placeholder="R$ 0,00"/></div>
                 </div>
                 <button>Adicionar transação</button>
-            </form>
-        </div>
-        <div>
-            <div>Extrato de transação</div>
-            <div>
-                <div>Mercadoria</div>
-                <div>Valor</div>
             </div>
-            <div>
-                <div>+ Lorem ipsum dolor sit amet consectetur</div>
-                <div>R$ 12.999,99</div>
-            </div>
-            <div>
-                <div>- Quis nostrud exercitation</div>
-                <div>R$ 99,99</div>
-            </div>
-            <div>
-                <div>+ Lorem ipsum </div>
-                <div>R$ 9,99</div>
-            </div>
-            <div>
-                <div>Total</div>
-                <div>
-                    <div>$ 9,99</div>
-                    <div>(LUCRO)</div>
+            <div class="resul-deal">
+                <span class="extract-deal">Extrato de transação</span>
+                <div class="shop-value">
+                    <span class="shop">Mercadoria</span>
+                    <span>Valor</span>
+                </div>
+                <div class="merc">
+                    <span>+ Lorem ipsum dolor sit amet consectetur</span>
+                    <span>R$ 12.999,99</span>
+                </div>
+                <div class="merc">
+                    <span>- Quis nostrud exercitation</span>
+                    <span>R$ 99,99</span>
+                </div>
+                <div class="merc">
+                    <span>+ Lorem ipsum </span>
+                    <span>R$ 9,99</span>
+                </div>
+                <div class="sum">
+                    <span>Total</span>
+                    <div>
+                        <span>$ 9,99</span>
+                        <span id="status">[LUCRO]<span>
+                    </div>
                 </div>
             </div>
         </div>
