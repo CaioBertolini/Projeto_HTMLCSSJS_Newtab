@@ -134,3 +134,7 @@ body{
     font-weight: normal;
     font-size: 0.5em;
 }
+
+#shop, #total{
+    padding-left: 13px;
+}
