@@ -41,10 +41,18 @@ body{
     color: black;
 }
 
+#hamb-menu{
+    visibility: hidden;
+}
+
 #dashboard,#abstract{
     border-right-style: solid;
     border-width: 2px;
     padding-right: 10px;
+}
+
+#close-menu{
+    visibility: hidden;
 }
 
 .body-bellow{
@@ -55,6 +63,8 @@ body{
 }
 
 .deal-block{
+    width: 30%;
+    height: 45%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -62,8 +72,6 @@ body{
     padding: 30px;
     border: 2px solid black;
     border-radius: 20px;
-    width: 30%;
-    height: 45%;
 }
 
 .deal-block input,select{
@@ -140,3 +148,79 @@ body{
 #shop, #total{
     padding-left: 13px;
 }
+
+@media screen and (max-width: 768px){
+    .header-img{
+        width: 70%;
+        margin: 10px 20px ;
+    }
+
+    .header-img img{
+        margin-right: 40%;
+    }
+
+    .header-menu{
+        display: flex;
+        position: fixed;
+        flex-direction: column;
+        height: 100%;
+        width: 30%;
+        background-color: black;
+        right: 0;
+        top: 0;
+        margin: 0;
+        padding-right: 10px;
+        align-items: flex-end;
+    }
+    
+    .header-menu a{
+        text-decoration: none;
+        color: white;
+        margin: 0;
+        padding: 5px 0px;
+        transition:All 1s ease;
+        -webkit-transition:All 1s ease;
+        -moz-transition:All 1s ease;
+        -o-transition:All 1s ease;
+    }
+
+    .header-menu a:hover{
+        background-color: white;
+        color: black;
+    }
+    
+    #dashboard,#abstract{
+        border-right-style: none;
+        padding-right: 0;
+    }
+
+    #close-menu{
+        visibility: visible;
+        /* padding-right: 90%; */
+        font-size: large;
+    }
+
+    #hamb-menu{
+        visibility: visible;
+        padding: 10px 20px;
+        height: 30px;
+        width: 30px;
+    }
+    .body-bellow{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .deal-block{
+        width: 85%;
+        height: 100%;
+        flex-direction: row;
+        margin: 50px 10px;
+    }
+
+    .resul-deal{
+        width: 90%;
+        margin: 50px 10px;
+    }
+}
+
