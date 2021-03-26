@@ -17,30 +17,32 @@
                 <a href="#" id="close-menu">X</a>
                 <a href="#" id="dashboard">Limpar dados</a>
                 <a href="#" id="abstract">Cadastro de transações</a>
-                <a href="#">Salvar no servidor</a>
+                <a href="#" id="salve-server">Salvar no servidor</a>
             </div>
         </header>
         <div class="body-bellow">
             <div class="deal-block">
                 <span class="new-deal">Nova transação</span>
-                <div class="style-type-deal">
-                    <span>Tipo transação</span>
-                    <div>
-                        <select name="type_deal" id="type_deal">
-                            <option value="buy">Compra</option>
-                            <option value="sell">Venda</option>
-                        </select>
+                <div class="camp-forms">
+                    <div class="style-type-deal">
+                        <span>Tipo transação</span>
+                        <div>
+                            <select name="type_deal" id="type_deal">
+                                <option value="buy">Compra</option>
+                                <option value="sell">Venda</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="name-merc">
+                        <span>Nome da mercadoria</span>
+                        <div><input type="tex" name="name_commodity" id="name_commodity" placeholder="Input"/></div>
+                    </div>
+                    <div class="value-merc">
+                        <span>Valor</span>
+                        <div><input type="text" name="value_commodity" id="value_commodity" placeholder="R$ 0,00"/></div>
                     </div>
                 </div>
-                <div>
-                    <span>Nome da mercadoria</span>
-                    <div><input type="tex" name="name_commodity" id="name_commodity" placeholder="Input"/></div>
-                </div>
-                <div>
-                    <span>Valor</span>
-                    <div><input type="text" name="value_commodity" id="value_commodity" placeholder="R$ 0,00"/></div>
-                </div>
-                <button>Adicionar transação</button>
+                <button>Adicionar transação</button>    
             </div>
             <div class="resul-deal">
                 <span class="extract-deal">Extrato de transação</span>
