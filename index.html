@@ -13,38 +13,41 @@
                 <img src="./assests/images/Ellipse_13.png" alt="">
                 <div>Controle finaceiro</div>
             </div>
-            <img src="./assests/images/hambuger-menu.svg" id="hamb-menu"/>
-            <div class="header-menu">
-                <a href="#" id="close-menu">X</a>
+            <img src="./assests/images/hambuger-menu.svg" id="hamb-menu" onclick="hambMenu()"/>
+            <div class="header-menu" id="menuHeader">
+                <a href="#" id="close-menu" onclick="closeMenu()">X</a>
                 <a href="#" id="dashboard">Limpar dados</a>
                 <a href="#" id="abstract">Cadastro de transações</a>
                 <a href="#" id="salve-server">Salvar no servidor</a>
             </div>
         </header>
         <div class="body-bellow">
-            <div class="deal-block">
-                <span class="new-deal">Nova transação</span>
-                <div class="camp-forms">
-                    <div class="style-type-deal">
-                        <span>Tipo transação</span>
-                        <div>
-                            <select name="type_deal" id="type_deal">
-                                <option value="buy">Compra</option>
-                                <option value="sell">Venda</option>
-                            </select>
+            <form class="deal-block" action="#" name="form-deal" onsubmit="return validaForm()">
+                    <span class="new-deal">Nova transação</span>
+                    <div class="camp-forms">
+                        <div class="style-type-deal">
+                            <span>Tipo transação</span>
+                            <div>
+                                <select name="type_deal" id="type_deal">
+                                    <option value="buy">Compra</option>
+                                    <option value="sell">Venda</option>
+                                </select>
+                            </div>
+                            <em></em>
+                        </div>
+                        <div class="name-merc">
+                            <span>Nome da mercadoria</span>
+                            <div><input type="text" name="nameCommodity" id="nameCommodity" placeholder="Input"/></div>
+                            <em id="mercNameNotice">Campo obrigatório</em>
+                        </div>
+                        <div class="value-merc">
+                            <span>Valor</span>
+                            <div><input type="text" name="valueCommodity" id="valueCommodity" placeholder="R$ 0,00"/></div>
+                            <em id="mercValueNotice">Campo obrigatório</em>
                         </div>
                     </div>
-                    <div class="name-merc">
-                        <span>Nome da mercadoria</span>
-                        <div><input type="tex" name="name_commodity" id="name_commodity" placeholder="Input"/></div>
-                    </div>
-                    <div class="value-merc">
-                        <span>Valor</span>
-                        <div><input type="text" name="value_commodity" id="value_commodity" placeholder="R$ 0,00"/></div>
-                    </div>
-                </div>
-                <button>Adicionar transação</button>    
-            </div>
+                    <button>Adicionar transação</button>
+            </form>
             <div class="resul-deal">
                 <span class="extract-deal">Extrato de transação</span>
                 <div class="shop-value">
@@ -72,5 +75,6 @@
                 </div>
             </div>
         </div>
+        <script src="./assests/js/script.js"></script>
     </body>
 </html>
