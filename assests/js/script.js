@@ -1,17 +1,25 @@
 // Declaração das variáveis do form
-let numSum = 0.0;
+let numSum = 0.0; // Soma dos resultados
+let divEmpty = 0; // Valor que ajuda na verificação se o Local Storage está vázio
+let dataLocal = JSON.parse(localStorage.getItem("dados")); // Local Storage
 
-// Verificando se a div com os resultados está vazia
-let div = document.getElementById("dealResul").innerHTML.trim().length;
-let divEmpty = 0;
-if (div == 0){
-    document.getElementById("dealResul").innerHTML +=`
+
+
+// Verificar se está vázio ou se tem conteúdo no Local Storage
+if (dataLocal){ //se não estiver vázio
+    for(i=0;i<dataLocal.length;i++){
+        AddTrans(dataLocal[i]["Commodity"],dataLocal[i]["Value"],dataLocal[i]["TypeShop"]);
+    }
+} else { //se estiver vázio
+    document.getElementById("dealResul").innerHTML =`
         <div class="merc" style="width: 100%; text-align: center;">
             <span style="width: 100%;"> Insira um valor de transação</span>
         </div>
         `;
-    divEmpty = 1;
     document.getElementById("totalValue").innerHTML ="R$ 0,00";
+    document.getElementById("statusValue").innerHTML = "";
+    divEmpty = 1;
+    dataLocal = [];
 };
 
 
@@ -23,10 +31,10 @@ function myFunction(x) {
         document.getElementById("menuHeader").style.display = "none";
     };
 };
-
 var x = window.matchMedia("(min-width: 768px)");
 myFunction(x);
 x.addListener(myFunction);
+
 
 // Abrir e fechar o hamburguer menu
 function hambMenu() {
@@ -37,64 +45,74 @@ function closeMenu() {
     document.getElementById("menuHeader").style.display = "none";
 };
 
+
 function validaForm() {
-    let commo = document.getElementById("nameCommodity").value;
-    let valueCommo = document.getElementById("valueCommodity").value;
-    let typeShop = document.getElementById("type_deal").value;
+    // Variáveis coletadas do form
+    data = {
+        "Commodity":document.getElementById("nameCommodity").value,
+        "Value":document.getElementById("valueCommodity").value,
+        "TypeShop":document.getElementById("type_deal").value
+    };
     // Checar se o form está preenchido
-    if (commo == '') {
+    if (data["Commodity"] == '') {
         document.getElementById("mercNameNotice").style.display = "block";
         return false;
     } else {
         document.getElementById("mercNameNotice").style.display = "none";
-        if (valueCommo == '') {
+        if (data["Value"] == '') {
             document.getElementById("mercValueNotice").style.display = "block";
             return false;
         } else {
             document.getElementById("mercValueNotice").style.display = "none";
-            // Realizar a adição da tarefe no resultado de transação
-            var sign = "+";
-            if (typeShop == "1"){
-                sign = "-"
-            };
-            if (divEmpty == 1){
-                document.getElementById("dealResul").innerHTML=""
-                divEmpty = 0
-            };
-            document.getElementById("dealResul").innerHTML +=`
-            <div class="merc">
-                    <span>`+ sign +` `+ commo +`</span>
-                    <span>R$ `+ valueCommo +`</span>
-                </div>
-            `
-
-            if (typeShop == "1"){
-                numSum += parseFloat(valueCommo.replace(".","").replace(",","."))*(-1.0);
-            } else{
-                numSum += parseFloat(valueCommo.replace(".","").replace(",","."));
-            };
-
-            let numSuma = applyMask(numSum.toFixed(2).toString().replace("-","").replace(".",""));
-            document.getElementById("totalValue").innerHTML = "R$ " + numSuma;
-
-            if(numSum < 0.0){
-                document.getElementById("statusValue").innerHTML = "[PREJUÍZO]";
-            } else if (numSum == 0.0){
-                document.getElementById("statusValue").innerHTML = "";
-            } else{
-                document.getElementById("statusValue").innerHTML = "[LUCRO]";
-            };
-
+            AddTrans(data["Commodity"],data["Value"],data["TypeShop"]);
             document.querySelector("form").reset();
             num = "";
+            dataLocal.push(data);
+            localStorage.setItem("dados", JSON.stringify(dataLocal));
             return false;
         };
     };
     
 };
 
-// Mascará para número
 
+// Realizar a adição da tarefe no resultado de transação
+function AddTrans(Commodity,Value,TypeSign){
+    var sign = "+";
+    if (TypeSign == "1"){
+        sign = "-"
+    };
+    if (divEmpty == 1){
+        document.getElementById("dealResul").innerHTML=""
+        divEmpty = 0
+    };
+    document.getElementById("dealResul").innerHTML +=`
+    <div class="merc">
+            <span>`+ sign +` `+ Commodity +`</span>
+            <span>R$ `+ Value +`</span>
+        </div>
+    `
+
+    if (TypeSign == "1"){
+        numSum += parseFloat(Value.replace(".","").replace(",","."))*(-1.0);
+    } else{
+        numSum += parseFloat(Value.replace(".","").replace(",","."));
+    };
+
+    let numSuma = applyMask(numSum.toFixed(2).toString().replace("-","").replace(".",""));
+    document.getElementById("totalValue").innerHTML = "R$ " + numSuma;
+
+    if(numSum < 0.0){
+        document.getElementById("statusValue").innerHTML = "[PREJUÍZO]";
+    } else if (numSum == 0.0){
+        document.getElementById("statusValue").innerHTML = "";
+    } else{
+        document.getElementById("statusValue").innerHTML = "[LUCRO]";
+    };
+}
+
+
+// Mascará para número
 function applyMask(num){
     let value = "";
     if (num.length == 0) {
@@ -131,9 +149,10 @@ function applyMask(num){
     return value;
 };
 
+
+// Mapeamento do teclado no input do Valor
 const input = document.getElementById("valueCommodity");
 let num = "";
-
 function checkNum(e) {
     e.preventDefault();
     if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "Backspace"].indexOf(e.key) == -1) {
@@ -143,8 +162,22 @@ function checkNum(e) {
         if (e.key == "Backspace") {
             num = num.slice(0, -10);
         };
-        e.target.value = applyMask(num)
+        e.target.value = applyMask(num);
     };
 };
-
 input.addEventListener('keydown', checkNum);
+
+
+// Limpar as transaçẽos e localstorage
+function clearData(){
+    localStorage.clear();
+    document.getElementById("dealResul").innerHTML =`
+        <div class="merc" style="width: 100%; text-align: center;">
+            <span style="width: 100%;"> Insira um valor de transação</span>
+        </div>
+        `;
+    document.getElementById("totalValue").innerHTML = "R$ 0,00";
+    document.getElementById("statusValue").innerHTML = "";
+    divEmpty = 1;
+    dataLocal = [];
+}
