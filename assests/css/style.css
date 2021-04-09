@@ -115,7 +115,6 @@ body{
     padding: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     margin: 50px 30px;
 }
 
@@ -151,7 +150,7 @@ body{
     text-align: end;
 }
 
-#status{
+#statusValue{
     font-weight: normal;
     font-size: 0.5em;
 }

@@ -22,15 +22,15 @@
             </div>
         </header>
         <div class="body-bellow">
-            <form class="deal-block" action="#" name="form-deal" onsubmit="return validaForm()">
+            <form class="deal-block" action="#" name="form-deal">
                     <span class="new-deal">Nova transação</span>
                     <div class="camp-forms">
                         <div class="style-type-deal">
                             <span>Tipo transação</span>
                             <div>
                                 <select name="type_deal" id="type_deal">
-                                    <option value="buy">Compra</option>
-                                    <option value="sell">Venda</option>
+                                    <option value="1">Compra</option>
+                                    <option value="2">Venda</option>
                                 </select>
                             </div>
                             <em></em>
@@ -46,7 +46,7 @@
                             <em id="mercValueNotice">Campo obrigatório</em>
                         </div>
                     </div>
-                    <button>Adicionar transação</button>
+                    <button onclick="return validaForm()">Adicionar transação</button>
             </form>
             <div class="resul-deal">
                 <span class="extract-deal">Extrato de transação</span>
@@ -54,23 +54,14 @@
                     <span id="shop">Mercadoria</span>
                     <span>Valor</span>
                 </div>
-                <div class="merc">
-                    <span>+ Lorem ipsum dolor sit amet consectetur</span>
-                    <span>R$ 12.999,99</span>
-                </div>
-                <div class="merc">
-                    <span>- Quis nostrud exercitation</span>
-                    <span>R$ 99,99</span>
-                </div>
-                <div class="merc">
-                    <span>+ Lorem ipsum </span>
-                    <span>R$ 9,99</span>
+                <div id="dealResul">
+                    
                 </div>
                 <div class="sum">
                     <span id="total">Total</span>
                     <div>
-                        <span>$ 9,99</span>
-                        <span id="status">[LUCRO]<span>
+                        <span id="totalValue"></span>
+                        <span id="statusValue"><span>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,20 @@
+// Declaração das variáveis do form
+let numSum = 0.0
+
+// Verificando se a div com os resultados está vazia
+let div = document.getElementById("dealResul").innerHTML.trim().length
+let divEmpty = 0
+if (div == 0){
+    document.getElementById("dealResul").innerHTML +=`
+        <div class="merc" style="width: 100%; text-align: center;">
+            <span style="width: 100%;"> Insira um valor de transação</span>
+        </div>
+        `
+    divEmpty = 1
+    document.getElementById("totalValue").innerHTML ="R$ 0,00"
+}
+
+
 // Modificação da tela em relação o hamburguer menu
 function myFunction(x) {
     if (x.matches) {
@@ -11,7 +28,6 @@ var x = window.matchMedia("(min-width: 768px)")
 myFunction(x)
 x.addListener(myFunction)
 
-
 // Abrir e fechar o hamburguer menu
 function hambMenu() {
     document.getElementById("menuHeader").style.display = "flex";
@@ -21,21 +37,59 @@ function closeMenu() {
     document.getElementById("menuHeader").style.display = "none";
 }
 
-// Checar se o form está preenchido
 function validaForm() {
-    if (document.getElementById("nameCommodity").value == '') {
+    let commo = document.getElementById("nameCommodity").value
+    let valueCommo = document.getElementById("valueCommodity").value
+    let typeShop = document.getElementById("type_deal").value
+    // Checar se o form está preenchido
+    if (commo == '') {
         document.getElementById("mercNameNotice").style.display = "block";
         return false
     } else {
         document.getElementById("mercNameNotice").style.display = "none";
-        if (document.getElementById("valueCommodity").value == '') {
+        if (valueCommo == '') {
             document.getElementById("mercValueNotice").style.display = "block";
             return false
         } else {
             document.getElementById("mercValueNotice").style.display = "none";
+            // Realizar a adição da tarefe no resultado de transação
+            var sign = "+";
+            if (typeShop == "1"){
+                sign = "-"
+            }
+            if (divEmpty == 1){
+                document.getElementById("dealResul").innerHTML=""
+                divEmpty = 0
+            }
+            document.getElementById("dealResul").innerHTML +=`
+            <div class="merc">
+                    <span>`+ sign +` `+ commo +`</span>
+                    <span>R$ `+ valueCommo +`</span>
+                </div>
+            `
+
+            if (typeShop == "1"){
+                numSum += parseFloat(valueCommo.replace(".","").replace(",","."))*(-1.0);
+            } else{
+                numSum += parseFloat(valueCommo.replace(".","").replace(",","."));
+            }
+
+            document.getElementById("totalValue").innerHTML = "R$ " + numSum.toString().replace("-","");
+
+            if(numSum < 0.0){
+                document.getElementById("statusValue").innerHTML = "[PREJUÍZO]";
+            } else if (numSum == 0.0){
+                document.getElementById("statusValue").innerHTML = "";
+            } else{
+                document.getElementById("statusValue").innerHTML = "[LUCRO]";
+            }
+
+            document.querySelector("form").reset()
+            num = ""
+            return false
         }
     }
-    document.querySelector("form").reset()
+    
 }
 
 // Mascará para número
