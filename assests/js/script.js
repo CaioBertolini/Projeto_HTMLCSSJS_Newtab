@@ -13,7 +13,7 @@ if (dataLocal){ //se não estiver vázio
 } else { //se estiver vázio
     document.getElementById("dealResul").innerHTML =`
         <div class="merc" style="width: 100%; text-align: center;">
-            <span style="width: 100%;"> Insira um valor de transação</span>
+            <span style="width: 100%;"> Nenhuma transação cadastrada.</span>
         </div>
         `;
     document.getElementById("totalValue").innerHTML ="R$ 0,00";
@@ -167,9 +167,15 @@ function checkNum(e) {
 };
 input.addEventListener('keydown', checkNum);
 
+// Abrir poup-up
+function openPoup (){
+    // document.getElementById("bodyBellow").style.opacity = "0.0";
+    document.getElementById("bodyBellow").style.visibility = "hidden";
+    document.getElementById("poupup").style.display = "flex";
+};
 
 // Limpar as transaçẽos e localstorage
-function clearData(){
+function clearData (){
     localStorage.clear();
     document.getElementById("dealResul").innerHTML =`
         <div class="merc" style="width: 100%; text-align: center;">
@@ -180,4 +186,12 @@ function clearData(){
     document.getElementById("statusValue").innerHTML = "";
     divEmpty = 1;
     dataLocal = [];
+    closePoup();
+};
+
+// Fechar poup-up
+function closePoup (){
+    // document.getElementById("bodyBellow").style.opacity = "1.0";
+    document.getElementById("bodyBellow").style.visibility = "visible";
+    document.getElementById("poupup").style.display = "none";
 }

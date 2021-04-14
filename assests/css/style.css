@@ -159,6 +159,31 @@ body{
     padding-left: 13px;
 }
 
+.poup-up{
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    background-color: #ddd;
+    padding: 2%;
+    width: 20%;
+    height: 15%;
+    margin: 17% 38%;
+}
+
+.poup-up div{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.poup-up button{
+    width: 40%;
+}
+
+
 @media screen and (max-width: 1112px){
     .header-top{
         padding-left: 0;
@@ -167,6 +192,11 @@ body{
     .body-bellow{
         padding-left: 0;
         padding-right: 0;
+    }
+    .poup-up{
+        width: 30%;
+        height: 15%;
+        margin: 20% 35%;
     }
 
 }
@@ -280,6 +310,11 @@ body{
         width: 90%;
         margin: 10px;
     }
+    .poup-up{
+        width: 30%;
+        height: 15%;
+        margin: 25% 32%;
+    }
 }
 
 @media screen and (max-width: 411px){
@@ -315,6 +350,11 @@ body{
     .deal-block button{
         width: 100%;
         margin-left: 0;
+    }
+    .poup-up{
+        width: 40%;
+        height: 20%;
+        margin: 40% 27%;
     }
 
 }

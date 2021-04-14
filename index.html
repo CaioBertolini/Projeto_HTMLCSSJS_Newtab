@@ -8,6 +8,13 @@
         <meta content="width=device-width, initial-scale=1" name="viewport" />
     </head>
     <body>
+        <div class="poup-up" id="poupup">
+            <span>Você deseja excluir as transações?</span>
+            <div>
+                <button onclick="clearData()">Sim</button>
+                <button onclick="closePoup()">Não</button>
+            </div>
+        </div>
         <header class="header-top">
             <div class="header-img">
                 <img src="./assests/images/Ellipse_13.png" alt="">
@@ -16,12 +23,12 @@
             <img src="./assests/images/hambuger-menu.svg" id="hamb-menu" onclick="hambMenu()"/>
             <div class="header-menu" id="menuHeader">
                 <a href="#" id="close-menu" onclick="closeMenu()">X</a>
-                <a href="#" id="dashboard" onclick="clearData()">Limpar dados</a>
+                <a href="#" id="dashboard" onclick="openPoup()">Limpar dados</a>
                 <a href="#" id="abstract">Cadastro de transações</a>
                 <a href="#" id="salve-server">Salvar no servidor</a>
             </div>
         </header>
-        <div class="body-bellow">
+        <div class="body-bellow" id="bodyBellow">
             <form class="deal-block" action="#" name="form-deal">
                     <span class="new-deal">Nova transação</span>
                     <div class="camp-forms">
