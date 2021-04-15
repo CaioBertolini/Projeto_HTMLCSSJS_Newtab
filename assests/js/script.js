@@ -11,7 +11,7 @@ if (dataLocal){ //se não estiver vázio
 } else { //se estiver vázio
     document.getElementById("dealResul").innerHTML =`
         <div class="merc" style="width: 100%; text-align: center;">
-            <span style="width: 100%;"> Nenhuma transação cadastrada.</span>
+            <span style="width: 100%;"> Nenhuma transação cadastrada</span>
         </div>
         `;
     document.getElementById("totalValue").innerHTML ="R$ 0,00";
@@ -168,6 +168,9 @@ input.addEventListener('keydown', checkNum);
 // Abrir poup-up
 function openPoup (){
     // document.getElementById("bodyBellow").style.opacity = "0.0";
+    if (!(x.matches)) {
+        document.getElementById("menuHeader").style.display = "none";
+    };
     document.getElementById("bodyBellow").style.visibility = "hidden";
     document.getElementById("poupup").style.display = "flex";
 };
