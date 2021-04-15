@@ -3,8 +3,6 @@ let numSum = 0.0; // Soma dos resultados
 let divEmpty = 0; // Valor que ajuda na verificação se o Local Storage está vázio
 let dataLocal = JSON.parse(localStorage.getItem("dados")); // Local Storage
 
-
-
 // Verificar se está vázio ou se tem conteúdo no Local Storage
 if (dataLocal){ //se não estiver vázio
     for(i=0;i<dataLocal.length;i++){
@@ -194,4 +192,70 @@ function closePoup (){
     // document.getElementById("bodyBellow").style.opacity = "1.0";
     document.getElementById("bodyBellow").style.visibility = "visible";
     document.getElementById("poupup").style.display = "none";
+}
+
+const aluno = "3803";
+function saveSevidor(){
+    fetch("https://api.airtable.com/v0/appRNtYLglpPhv2QD/Historico", {
+    headers: {
+        Authorization: "Bearer key2CwkHb0CKumjuM"
+        }
+    })
+    .then((response) => {return response.json()})
+    .then((responseJson) => {
+        exist = responseJson.records.filter((record) => {
+            if (aluno == record.fields.Aluno){
+                return true
+            }
+            return false
+        })
+        if (exist.length == 0){
+            insertData()
+        } else{
+            updateData(exist.records.id)
+        }
+    })
+};
+
+function insertData(){
+    let jsonData = JSON.stringify(dataLocal);
+    fetch("https://api.airtable.com/v0/appRNtYLglpPhv2QD/Historico", {
+        method: "POST",
+        headers: {
+            Authorization: "Bearer key2CwkHb0CKumjuM",
+            "Content-Type" : "application/json"
+            },
+        body: JSON.stringify({
+            "records": [
+                {
+                "fields": {
+                    "Aluno": aluno,
+                    "Json": jsonData
+                    }
+                }
+            ]
+        })
+    })
+}
+
+function updateData(id){
+    let jsonData = JSON.stringify(dataLocal);
+    fetch("https://api.airtable.com/v0/appRNtYLglpPhv2QD/Historico", {
+        method: "PATCH",
+        headers: {
+            Authorization: "Bearer key2CwkHb0CKumjuM",
+            "Content-Type" : "application/json"
+            },
+        body: JSON.stringify({
+            "records": [
+                {
+                    "id": id,
+                    "fields": {
+                        "Aluno": aluno,
+                        "Json": jsonData
+                    }
+                }
+            ]
+        })
+    })
 }
