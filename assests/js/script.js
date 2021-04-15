@@ -29,7 +29,7 @@ function myFunction(x) {
         document.getElementById("menuHeader").style.display = "none";
     };
 };
-var x = window.matchMedia("(min-width: 768px)");
+var x = window.matchMedia("(min-width: 800px)");
 myFunction(x);
 x.addListener(myFunction);
 

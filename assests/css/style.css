@@ -184,7 +184,7 @@ body{
 }
 
 
-@media screen and (max-width: 1112px){
+@media screen and (max-width: 1140px){
     .header-top{
         padding-left: 0;
         padding-right: 0;
@@ -201,14 +201,11 @@ body{
 
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 800px){
     .header-img{
-        width: 70%;
+        width: 60%;
         margin: 10px 20px ;
-    }
-
-    .header-img img{
-        margin-right: 38%;
+        justify-content: space-between;
     }
 
     .header-menu{
@@ -317,7 +314,7 @@ body{
     }
 }
 
-@media screen and (max-width: 411px){
+@media screen and (max-width: 650px){
     .deal-block{
         margin: 10px;
         padding: 50px 0px;
@@ -328,8 +325,9 @@ body{
         border-radius: 0;
     }
 
-    .header-img img{
-        margin-right: 20%;
+    .header-img{
+        width: 62%;
+        justify-content: space-between;
     }
 
     .header-img div{
