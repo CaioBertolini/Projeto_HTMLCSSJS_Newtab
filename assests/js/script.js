@@ -195,7 +195,7 @@ function closePoup (){
 }
 
 const aluno = "3803";
-function saveSevidor(){
+function saveServidor(){
     fetch("https://api.airtable.com/v0/appRNtYLglpPhv2QD/Historico", {
     headers: {
         Authorization: "Bearer key2CwkHb0CKumjuM"
@@ -212,7 +212,7 @@ function saveSevidor(){
         if (exist.length == 0){
             insertData()
         } else{
-            updateData(exist.records.id)
+            updateData(exist[0].id)
         }
     })
 };
@@ -249,10 +249,10 @@ function updateData(id){
         body: JSON.stringify({
             "records": [
                 {
-                    "id": id,
-                    "fields": {
-                        "Aluno": aluno,
-                        "Json": jsonData
+                "id": id,
+                "fields": {
+                    "Aluno": aluno,
+                    "Json": jsonData
                     }
                 }
             ]
