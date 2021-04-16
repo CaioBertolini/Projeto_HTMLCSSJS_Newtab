@@ -197,6 +197,7 @@ function closePoup (){
     document.getElementById("poupup").style.display = "none";
 }
 
+// Salvar no servidor
 const aluno = "3803";
 function saveServidor(){
     fetch("https://api.airtable.com/v0/appRNtYLglpPhv2QD/Historico", {
@@ -220,6 +221,7 @@ function saveServidor(){
     })
 };
 
+// Criar se não tiver o dado no servidor
 function insertData(){
     let jsonData = JSON.stringify(dataLocal);
     fetch("https://api.airtable.com/v0/appRNtYLglpPhv2QD/Historico", {
@@ -241,6 +243,7 @@ function insertData(){
     })
 }
 
+// Atualizar se tiver o dado no servidor
 function updateData(id){
     let jsonData = JSON.stringify(dataLocal);
     fetch("https://api.airtable.com/v0/appRNtYLglpPhv2QD/Historico", {
